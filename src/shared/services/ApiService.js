@@ -1,7 +1,6 @@
 // @flow
 import { serialize } from '../helpers/url';
 import type { ApiServiceInterface } from './ApiServiceInterface';
-import { isNotEmpty } from 'shared/utils';
 
 export class ApiService implements ApiServiceInterface {
   static METHOD_GET = 'GET';

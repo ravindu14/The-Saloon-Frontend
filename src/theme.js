@@ -8,7 +8,7 @@ const engine = new Styletron();
 const primitives = {
   textPrimary: '#9F9F9F',
   accent: '#171717',
-  accent50: '#FDEDFC',
+  accent50: '#043001',
   accent100: '#f5f2f5',
   accent200: '#d1d1d1',
   accent300: '#F45AEA',

@@ -60,7 +60,7 @@ export const InputStyles = {
       borderRadius: '7px !important',
       margin: '0px',
       backgroundColor: '#ffffff',
-      border: `1px solid ${$error ? '#e0505e' : '#eeeeee'}`,
+      border: `1px solid ${$error ? '#e0505e' : '#c7c7c7'}`,
     }),
   },
   Input: {
