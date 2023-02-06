@@ -11,6 +11,7 @@ import {
   HANDLE_NOTIFICATION,
   USER_SIGN_IN_SUCCESS,
   INITIAL_AUTH_FAIL,
+  USER_PROFILE_UPDATE_SUCCESS,
 } from 'actionTypes/auth';
 
 export type AuthStateType = {
@@ -67,7 +68,14 @@ const reducer = (
     case USER_SIGN_IN_SUCCESS:
       return {
         ...state,
+        status: ASYNC_STATUS.SUCCESS,
         isAuthenticated: true,
+        currentUser: payload,
+      };
+    case USER_PROFILE_UPDATE_SUCCESS:
+      return {
+        ...state,
+        status: ASYNC_STATUS.SUCCESS,
         currentUser: payload,
       };
     default:

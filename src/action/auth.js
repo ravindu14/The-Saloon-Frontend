@@ -4,6 +4,7 @@ import {
   HANDLE_NOTIFICATION,
   INITIAL_AUTH_FAIL,
   USER_SIGN_IN_SUCCESS,
+  USER_PROFILE_UPDATE_SUCCESS,
 } from 'actionTypes/auth';
 import Alert from 'components/Alert';
 
@@ -101,6 +102,27 @@ export const isUserAuthenticated = () => {
       }
 
       dispatch({ type: USER_SIGN_IN_SUCCESS, payload: currentUser });
+    } catch (e) {
+      dispatch(notificationHandler(false, 'Something went wrong'));
+    }
+  };
+};
+
+export const updateUserProfile = (profile: any) => {
+  return async (dispatch, getState, serviceManager) => {
+    try {
+      dispatch(asyncAuthInit());
+
+      let authService = serviceManager.get('AuthService');
+
+      const { success, data } = await authService.updateUserProfile(profile);
+
+      if (!success) {
+        dispatch(notificationHandler(success, 'Failed to update user profile'));
+        return;
+      }
+
+      dispatch({ type: USER_PROFILE_UPDATE_SUCCESS, payload: data });
     } catch (e) {
       dispatch(notificationHandler(false, 'Something went wrong'));
     }

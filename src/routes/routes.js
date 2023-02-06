@@ -21,6 +21,18 @@ const routes = [
     component: lazy(() => import('modules/home/userHome')),
   },
   {
+    path: '/user-gallery',
+    exact: true,
+    auth: true,
+    component: lazy(() => import('modules/home/userHome/pages/gallery')),
+  },
+  {
+    path: '/user-profile',
+    exact: true,
+    auth: true,
+    component: lazy(() => import('modules/home/userHome/pages/profile')),
+  },
+  {
     path: '/admin-dashboard',
     exact: true,
     auth: true,
@@ -31,12 +43,6 @@ const routes = [
     exact: true,
     auth: true,
     component: lazy(() => import('modules/home/merchantHome')),
-  },
-  {
-    path: '/dashboard',
-    exact: true,
-    auth: true,
-    component: lazy(() => import('modules/home')),
   },
 ];
 

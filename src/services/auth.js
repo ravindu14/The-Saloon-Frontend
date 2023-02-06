@@ -20,4 +20,8 @@ export class AuthService {
   getCurretUser() {
     return this.api.get(`${this.endpoint}/user-profile`);
   }
+
+  updateUserProfile(payload) {
+    return this.api.put(`${this.endpoint}/user-profile`, payload);
+  }
 }
