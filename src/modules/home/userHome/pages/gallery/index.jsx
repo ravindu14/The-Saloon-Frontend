@@ -12,7 +12,7 @@ const UserGallery = () => {
 
   return (
     <Layout>
-      <div>{`This is new user gallery ${currentUser.firstName}`}</div>
+      <div>{`This is  user gallery ${currentUser.firstName}`}</div>
     </Layout>
   );
 };
