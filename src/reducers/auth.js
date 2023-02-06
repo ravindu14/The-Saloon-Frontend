@@ -1,21 +1,30 @@
 // @flow
-import { type Action } from "shared/types/ReducerAction";
+import { type Action } from 'shared/types/ReducerAction';
 import {
   type AsyncStatusType,
   type NotificationType,
-} from "shared/types/General";
+} from 'shared/types/General';
 
-import { ASYNC_STATUS } from "constants/async";
-import { ASYNC_AUTH_INIT, HANDLE_NOTIFICATION } from "actionTypes/auth";
+import { ASYNC_STATUS } from 'constants/async';
+import {
+  ASYNC_AUTH_INIT,
+  HANDLE_NOTIFICATION,
+  USER_SIGN_IN_SUCCESS,
+  INITIAL_AUTH_FAIL,
+} from 'actionTypes/auth';
 
 export type AuthStateType = {
   status: AsyncStatusType,
   notification: NotificationType,
+  isAuthenticated: boolean,
+  currentUser: any,
 };
 
 const initialState: AuthStateType = {
   status: ASYNC_STATUS.INIT,
   notification: null,
+  isAuthenticated: false,
+  currentUser: null,
 };
 
 function asyncAuthInit(state: AuthStateType) {
@@ -23,6 +32,16 @@ function asyncAuthInit(state: AuthStateType) {
     ...state,
     status: ASYNC_STATUS.LOADING,
     notification: null,
+  };
+}
+
+function asyncInitialAuthFail(state: AuthStateType) {
+  return {
+    ...state,
+    status: ASYNC_STATUS.INIT,
+    notification: null,
+    isAuthenticated: false,
+    currentUser: null,
   };
 }
 
@@ -43,6 +62,14 @@ const reducer = (
       return asyncAuthInit(state);
     case HANDLE_NOTIFICATION:
       return handleNotification(state, payload);
+    case INITIAL_AUTH_FAIL:
+      return asyncInitialAuthFail(state);
+    case USER_SIGN_IN_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: true,
+        currentUser: payload,
+      };
     default:
       return state;
   }

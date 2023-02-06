@@ -1,10 +1,23 @@
-// @flow
-import axios from "axios";
+import type { ApiServiceInterface } from 'shared/services/ApiServiceInterface';
 
 export class AuthService {
-  endpoint: string = "http://localhost:8080/api";
+  api: ApiServiceInterface;
 
-  sampleAuthServiceRequest(payload: Object) {
-    return axios.post(this.endpoint, payload);
+  endpoint: string = '/auth';
+
+  constructor(apiService: ApiServiceInterface) {
+    this.api = apiService;
+  }
+
+  signUp(payload: Object = {}) {
+    return this.api.post(`${this.endpoint}/tenant/signUp`, payload);
+  }
+
+  signIn(payload: Object = {}) {
+    return this.api.post(`${this.endpoint}/login`, payload);
+  }
+
+  getCurretUser() {
+    return this.api.get(`${this.endpoint}/user-profile`);
   }
 }
