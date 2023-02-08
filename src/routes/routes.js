@@ -44,6 +44,26 @@ const routes = [
     auth: true,
     component: lazy(() => import('modules/home/merchantHome')),
   },
+  {
+    path: '/merchant-services',
+    exact: true,
+    auth: true,
+    component: lazy(() => import('modules/home/merchantHome/pages/services')),
+  },
+  {
+    path: '/merchant-adjenda',
+    exact: true,
+    auth: true,
+    component: lazy(() => import('modules/home/merchantHome/pages/adjenda')),
+  },
+  {
+    path: '/merchant-appointments',
+    exact: true,
+    auth: true,
+    component: lazy(() =>
+      import('modules/home/merchantHome/pages/appointments')
+    ),
+  },
 ];
 
 export default routes;

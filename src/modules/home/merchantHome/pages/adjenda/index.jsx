@@ -5,16 +5,16 @@ import {
   type AsyncStatusType,
   type NotificationType,
 } from 'shared/types/General';
-import Layout from './components/layout';
+import Layout from '../../components/layout';
 
-const MerchantDashboard = () => {
+const MerchantAdjenda = () => {
   const { status, currentUser } = useSelector(state => state.auth);
 
   return (
     <Layout>
-      <div>{`This is new merchant dashboard ${currentUser.firstName}`}</div>
+      <div>{`This is merchant adjenda ${currentUser.firstName}`}</div>
     </Layout>
   );
 };
 
-export default MerchantDashboard;
+export default MerchantAdjenda;
