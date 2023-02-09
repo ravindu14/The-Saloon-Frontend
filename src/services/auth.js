@@ -10,7 +10,7 @@ export class AuthService {
   }
 
   signUp(payload: Object = {}) {
-    return this.api.post(`${this.endpoint}/tenant/signUp`, payload);
+    return this.api.post(`${this.endpoint}/signup`, payload);
   }
 
   signIn(payload: Object = {}) {
