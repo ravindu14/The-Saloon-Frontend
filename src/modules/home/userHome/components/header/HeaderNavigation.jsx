@@ -50,8 +50,6 @@ const HeaderNavigationBar = () => {
 
   const activePath = location.pathname;
 
-  console.log(activePath);
-
   const isActive = (path: string) => {
     return activePath.startsWith(`/${path}`);
   };

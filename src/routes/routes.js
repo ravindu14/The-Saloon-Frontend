@@ -51,10 +51,10 @@ const routes = [
     component: lazy(() => import('modules/home/merchantHome/pages/services')),
   },
   {
-    path: '/merchant-adjenda',
+    path: '/merchant-agenda',
     exact: true,
     auth: true,
-    component: lazy(() => import('modules/home/merchantHome/pages/adjenda')),
+    component: lazy(() => import('modules/home/merchantHome/pages/agenda')),
   },
   {
     path: '/merchant-appointments',

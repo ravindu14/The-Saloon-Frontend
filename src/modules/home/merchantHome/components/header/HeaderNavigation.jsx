@@ -29,14 +29,14 @@ const NavigationItem = styled('div', ({ $theme, $selected }: any) => ({
 const NavigationListEnum = {
   HOME: 'Home',
   SERVICES: 'Services',
-  ADJENDA: 'Adjenda',
+  AGENDA: 'Agenda',
   APPOINTMENTS: 'Appointments',
 };
 
 const NaviagtionPathEnum = {
   HOME: 'merchant-dashboard',
   SERVICES: 'merchant-services',
-  ADJENDA: 'merchant-adjenda',
+  AGENDA: 'merchant-agenda',
   APPOINTMENTS: 'merchant-appointments',
 };
 
@@ -70,11 +70,9 @@ const HeaderNavigationBar = () => {
           {NavigationListEnum.SERVICES}
         </NavigationItem>
       </Link>
-      <Link to={'/merchant-adjenda'} style={anchorStyles}>
-        <NavigationItem
-          {...{ $selected: isActive(NaviagtionPathEnum.ADJENDA) }}
-        >
-          {NavigationListEnum.ADJENDA}
+      <Link to={'/merchant-agenda'} style={anchorStyles}>
+        <NavigationItem {...{ $selected: isActive(NaviagtionPathEnum.AGENDA) }}>
+          {NavigationListEnum.AGENDA}
         </NavigationItem>
       </Link>
       <Link to={'/merchant-appointments'} style={anchorStyles}>
