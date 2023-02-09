@@ -110,3 +110,40 @@ export const PaymentInputStyles = {
     }),
   },
 };
+
+export const SelectStyles = {
+  Root: {
+    style: ({ $theme }: any) => ({
+      border: '1px solid #c7c7c7',
+      borderRadius: '7px',
+    }),
+  },
+  ControlContainer: {
+    style: () => ({
+      border: 'none',
+      borderRadius: '7px',
+      fontSize: '0.8rem',
+      lineHeight: '15px',
+      backgroundColor: '#ffffff',
+    }),
+  },
+  Tag: {
+    props: {
+      overrides: {
+        Root: {
+          style: ({ $theme }: any) => ({
+            // outline: `${$theme.colors.warning600} solid`,
+            borderRadius: '8px',
+            color: '#179926',
+            backgroundColor: '#e0ffe7',
+          }),
+        },
+        Action: {
+          style: ({ $theme }: any) => ({
+            color: '#179926',
+          }),
+        },
+      },
+    },
+  },
+};

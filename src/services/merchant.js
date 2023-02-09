@@ -16,4 +16,12 @@ export class MerchantService {
   getServices() {
     return this.api.get(`${this.endpoint}/services`);
   }
+
+  getMerchantProfile() {
+    return this.api.get(`${this.endpoint}/profile`);
+  }
+
+  updateProfile(payload: Object = {}) {
+    return this.api.put(`${this.endpoint}/profile`, payload);
+  }
 }

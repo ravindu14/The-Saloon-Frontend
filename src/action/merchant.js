@@ -1,6 +1,7 @@
 // @flow
 import {
   ASYNC_MERCHANT_INIT,
+  GET_MERCHANT_PROFILE_SUCCESS,
   GET_SERVICES_SUCCESS,
   HANDLE_NOTIFICATION,
 } from 'actionTypes/merchant';
@@ -78,6 +79,53 @@ export const getAllServices = () => {
       }
 
       dispatch({ type: GET_SERVICES_SUCCESS, payload: data });
+    } catch (e) {
+      dispatch(notificationHandler(false, 'Something went wrong'));
+    }
+  };
+};
+
+export const getMerchantProfile = () => {
+  return async (dispatch, getState, serviceManager) => {
+    try {
+      dispatch(asyncMerchantInit());
+
+      let merchantService = serviceManager.get('MerchantService');
+
+      const {
+        success: retrieveSuccess,
+        data,
+      } = await merchantService.getMerchantProfile();
+
+      if (!retrieveSuccess) {
+        dispatch(
+          notificationHandler(retrieveSuccess, 'Failed to fetch profile')
+        );
+        return;
+      }
+
+      dispatch({ type: GET_MERCHANT_PROFILE_SUCCESS, payload: data });
+    } catch (e) {
+      dispatch(notificationHandler(false, 'Something went wrong'));
+    }
+  };
+};
+
+export const updateMerchantProfile = (profile: any) => {
+  return async (dispatch, getState, serviceManager) => {
+    try {
+      dispatch(asyncMerchantInit());
+
+      let merchantService = serviceManager.get('MerchantService');
+
+      const { success, data } = await merchantService.updateProfile(profile);
+
+      if (!success) {
+        dispatch(notificationHandler(false, 'Failed to update profile'));
+        return;
+      }
+
+      dispatch({ type: GET_MERCHANT_PROFILE_SUCCESS, payload: data });
     } catch (e) {
       dispatch(notificationHandler(false, 'Something went wrong'));
     }
