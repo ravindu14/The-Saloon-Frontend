@@ -2,7 +2,9 @@ import { styled } from 'baseui';
 
 export const HeaderContainer = styled('div', ({ $theme }) => ({
   width: '100vw',
-  backgroundColor: '#179926',
+  background: 'rgb(15,24,8)',
+  background:
+    'linear-gradient(90deg, rgba(15,24,8,1) 0%, rgba(38,175,23,1) 100%, rgba(35,120,49,1) 100%)',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',

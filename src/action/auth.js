@@ -5,6 +5,7 @@ import {
   INITIAL_AUTH_FAIL,
   USER_SIGN_IN_SUCCESS,
   USER_PROFILE_UPDATE_SUCCESS,
+  USER_SIGN_OUT_SUCCESS,
 } from 'actionTypes/auth';
 import Alert from 'components/Alert';
 
@@ -123,6 +124,22 @@ export const updateUserProfile = (profile: any) => {
       }
 
       dispatch({ type: USER_PROFILE_UPDATE_SUCCESS, payload: data });
+    } catch (e) {
+      dispatch(notificationHandler(false, 'Something went wrong'));
+    }
+  };
+};
+
+export const logout = () => {
+  return async (dispatch, getState, serviceManager) => {
+    try {
+      let authService = serviceManager.get('AuthService');
+
+      serviceManager.get('ApiService').authToken = null;
+
+      localStorage.removeItem('access-token');
+
+      dispatch({ type: USER_SIGN_OUT_SUCCESS });
     } catch (e) {
       dispatch(notificationHandler(false, 'Something went wrong'));
     }

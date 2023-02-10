@@ -4,6 +4,7 @@ import {
   GET_MERCHANT_PROFILE_SUCCESS,
   GET_SERVICES_SUCCESS,
   HANDLE_NOTIFICATION,
+  SEARCH_MERCHANT_PROFILES_SUCCESS,
 } from 'actionTypes/merchant';
 import Alert from 'components/Alert';
 
@@ -126,6 +127,29 @@ export const updateMerchantProfile = (profile: any) => {
       }
 
       dispatch({ type: GET_MERCHANT_PROFILE_SUCCESS, payload: data });
+    } catch (e) {
+      dispatch(notificationHandler(false, 'Something went wrong'));
+    }
+  };
+};
+
+export const getMerchantProfiles = (keyword: any) => {
+  return async (dispatch, getState, serviceManager) => {
+    try {
+      dispatch(asyncMerchantInit());
+
+      let merchantService = serviceManager.get('MerchantService');
+
+      const { success, data } = await merchantService.getMerchantProfiles(
+        keyword
+      );
+
+      if (!success) {
+        dispatch(notificationHandler(false, 'Failed to get profiles'));
+        return;
+      }
+
+      dispatch({ type: SEARCH_MERCHANT_PROFILES_SUCCESS, payload: data });
     } catch (e) {
       dispatch(notificationHandler(false, 'Something went wrong'));
     }

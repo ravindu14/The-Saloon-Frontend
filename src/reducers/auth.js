@@ -12,6 +12,7 @@ import {
   USER_SIGN_IN_SUCCESS,
   INITIAL_AUTH_FAIL,
   USER_PROFILE_UPDATE_SUCCESS,
+  USER_SIGN_OUT_SUCCESS,
 } from 'actionTypes/auth';
 
 export type AuthStateType = {
@@ -77,6 +78,12 @@ const reducer = (
         ...state,
         status: ASYNC_STATUS.SUCCESS,
         currentUser: payload,
+      };
+    case USER_SIGN_OUT_SUCCESS:
+      return {
+        ...state,
+        isAuthenticated: false,
+        currentUser: null,
       };
     default:
       return state;

@@ -11,6 +11,7 @@ import {
   HANDLE_NOTIFICATION,
   GET_SERVICES_SUCCESS,
   GET_MERCHANT_PROFILE_SUCCESS,
+  SEARCH_MERCHANT_PROFILES_SUCCESS,
 } from 'actionTypes/merchant';
 
 export type MerchantStateType = {
@@ -18,6 +19,7 @@ export type MerchantStateType = {
   notification: NotificationType,
   services: Array<any>,
   profile: any,
+  searchProfiles: Array<any>,
 };
 
 const initialState: AuthStateType = {
@@ -25,6 +27,7 @@ const initialState: AuthStateType = {
   notification: null,
   services: [],
   profile: null,
+  searchProfiles: [],
 };
 
 function asyncMerchantInit(state: AuthStateType) {
@@ -63,6 +66,12 @@ const reducer = (
         ...state,
         status: ASYNC_STATUS.SUCCESS,
         profile: payload,
+      };
+    case SEARCH_MERCHANT_PROFILES_SUCCESS:
+      return {
+        ...state,
+        status: ASYNC_STATUS.SUCCESS,
+        searchProfiles: payload,
       };
     default:
       return state;
