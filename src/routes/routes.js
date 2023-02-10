@@ -39,6 +39,12 @@ const routes = [
     component: lazy(() => import('modules/home/adminHome')),
   },
   {
+    path: '/admin-payments',
+    exact: true,
+    auth: true,
+    component: lazy(() => import('modules/home/adminHome/pages/payments')),
+  },
+  {
     path: '/merchant-dashboard',
     exact: true,
     auth: true,
