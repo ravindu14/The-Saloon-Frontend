@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { styled } from 'baseui';
 import { BsPersonCircle } from 'react-icons/bs';
+import { useDispatch } from 'react-redux';
+import { logout } from 'action/auth';
 
 const ProfileContainer = styled('div', ({ $theme }) => ({
   color: '#179926',
@@ -58,6 +60,11 @@ const ModalBackdrop = styled('div', ({ $theme }) => ({
 
 const HeaderProfile = () => {
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch();
+
+  const onClickLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <ProfileContainer onClick={() => setOpen(!open)}>
@@ -66,7 +73,7 @@ const HeaderProfile = () => {
         <>
           <ModalBackdrop onClick={() => setOpen(false)} />
           <ModalContainer>
-            <ModalItem>Log out</ModalItem>
+            <ModalItem onClick={onClickLogout}>Log out</ModalItem>
           </ModalContainer>
         </>
       )}

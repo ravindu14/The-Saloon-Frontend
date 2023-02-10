@@ -24,4 +24,8 @@ export class MerchantService {
   updateProfile(payload: Object = {}) {
     return this.api.put(`${this.endpoint}/profile`, payload);
   }
+
+  getMerchantProfiles(keyword: string) {
+    return this.api.put(`${this.endpoint}/profiles`, keyword);
+  }
 }
